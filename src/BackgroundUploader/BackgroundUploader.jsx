@@ -3,7 +3,10 @@ export function BackgroundUploader({ isVisible, setIsVisible }) {
 	return (
 		<>
 			<div>
-				<label className={isVisible ? '' : 'vanish'} for='bg-upload'>
+				<label
+					className={isVisible ? 'uploader' : 'vanish uploader'}
+					for='bg-upload'
+				>
 					Загрузить фон
 				</label>
 				<input

@@ -7,8 +7,8 @@ export function PickUploader({ isVisible, setIsVisible }) {
 				<div>
 					<img
 						alt='not found'
-						width={'250px'}
 						src={URL.createObjectURL(selectedImage)}
+						className='photo'
 					/>
 					<button
 						className={isVisible ? 'subEditButton' : 'vanish subeditButton'}
@@ -21,11 +21,16 @@ export function PickUploader({ isVisible, setIsVisible }) {
 					</button>
 				</div>
 			)}
-			<label className={isVisible ? '' : 'vanish'} for='pic-upload'>
-				Загрузить фото
-			</label>
+			<div className={'uploader-wrapper'}>
+				<label
+					className={isVisible ? 'uploader' : 'vanish uploader'}
+					for='pic-upload'
+				>
+					Загрузить фото
+				</label>
+			</div>
 			<input
-				className={isVisible ? 'vanish subEditButton' : 'vanish subeditButton'}
+				className={'vanish'}
 				type='file'
 				id='pic-upload'
 				onChange={event => {

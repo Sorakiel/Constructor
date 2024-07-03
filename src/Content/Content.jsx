@@ -6,7 +6,6 @@ import React, { useState } from 'react'
 export function Content({ isVisible, setIsVisible }) {
 	const [texts, setTexts] = useState([])
 	const [textContent, setTextContent] = useState('')
-
 	const addText = event => {
 		if (textContent != 0) {
 			setTexts([...texts, { content: textContent }])
@@ -20,8 +19,8 @@ export function Content({ isVisible, setIsVisible }) {
 		}
 	}
 
-	const editText = id => {
-		console.log(id)
+	const editText = index => {
+		console.log(index)
 	}
 	return (
 		<>
@@ -58,11 +57,6 @@ export function Content({ isVisible, setIsVisible }) {
 						</>
 					))}
 				</ul>
-				<button
-					className={isVisible ? 'backgroundButton' : 'vanish backgroundButton'}
-				>
-					Изменить фон
-				</button>
 			</div>
 		</>
 	)

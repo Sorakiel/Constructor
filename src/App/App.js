@@ -11,7 +11,9 @@ export default function App() {
 	return (
 		<>
 			<div className={styles.header}>
-				<img src='/images/ITC_LOGO.png' className={styles.logo} width={40} />
+				<a href='index.html'>
+					<img src='/images/ITC_LOGO.png' className={styles.logo} width={40} />
+				</a>
 				<div className={styles.auth}>
 					<button className={styles.authButton}>Войти</button>
 					<button onClick={toggleVisible} className={styles.editButton}>
@@ -19,9 +21,11 @@ export default function App() {
 					</button>
 				</div>
 			</div>
-			<Content isVisible={isVisible} setIsVisible={setIsVisible} />
-			<PickUploader isVisible={isVisible} setIsVisible={setIsVisible} />
-			<BackgroundUploader isVisible={isVisible} setIsVisible={setIsVisible} />
+			<div className={styles.wrapper}>
+				<Content isVisible={isVisible} setIsVisible={setIsVisible} />
+				<PickUploader isVisible={isVisible} setIsVisible={setIsVisible} />
+				<BackgroundUploader isVisible={isVisible} setIsVisible={setIsVisible} />
+			</div>
 		</>
 	)
 }
