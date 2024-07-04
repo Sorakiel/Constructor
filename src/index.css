@@ -1,4 +1,5 @@
 :root {
+	height: 100vh;
 	font-family: Monserrat;
 	line-height: 1.5;
 	font-weight: 400;
@@ -23,8 +24,8 @@ body {
 }
 
 .uploader {
-	margin-top: 1vh;
-	margin-bottom: 1vh;
+	margin-top: 0.5vh;
+	margin-bottom: 0.5vh;
 	border-radius: 8px;
 	border: 1px solid transparent;
 	padding: 0.6em 1.2em;

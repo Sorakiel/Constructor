@@ -1,13 +1,11 @@
 import React, { useState } from 'react'
-/**
- * export const Component1: React.FC = () => {}
- *
- */
 export function Content({ isVisible, setIsVisible }) {
 	const [texts, setTexts] = useState([])
 	const [textContent, setTextContent] = useState('')
+	const [editIndex, setEditIndex] = useState(null)
+
 	const addText = event => {
-		if (textContent != 0) {
+		if (textContent.trim() !== '') {
 			setTexts([...texts, { content: textContent }])
 			setTextContent('')
 		}
@@ -19,9 +17,23 @@ export function Content({ isVisible, setIsVisible }) {
 		}
 	}
 
-	const editText = index => {
-		console.log(index)
+	const startEdit = index => {
+		setTextContent(texts[index].content)
+		setEditIndex(index)
 	}
+
+	const finishEdit = () => {
+		if (editIndex !== null) {
+			if (textContent != 0) {
+				const newTexts = [...texts]
+				newTexts[editIndex].content = textContent
+				setTexts(newTexts)
+				setTextContent('')
+				setEditIndex(null)
+			}
+		}
+	}
+
 	return (
 		<>
 			<div>
@@ -46,10 +58,9 @@ export function Content({ isVisible, setIsVisible }) {
 				<ul>
 					{texts.map((text, index) => (
 						<>
-							<li id={index}>{text.content}</li>
+							<li key={index}>{text.content}</li>
 							<button
-								//TODO: доделать редактирование
-								onClick={editText({ index })}
+								onClick={() => startEdit(index)}
 								className={isVisible ? 'subEditButton' : 'vanish editButton'}
 							>
 								✎
@@ -57,6 +68,9 @@ export function Content({ isVisible, setIsVisible }) {
 						</>
 					))}
 				</ul>
+				{editIndex !== null && (
+					<button onClick={finishEdit}>Сохранить изменения</button>
+				)}
 			</div>
 		</>
 	)
